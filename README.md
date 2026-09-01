@@ -40,7 +40,7 @@ Organizador de viagens — cotação, estimativa de preços, indicação de loca
 - [Aula 14 - SQLite introdução](https://etec-bento-quirino.github.io/Programacao-Aplicativos-Moveis-I/modulo-05-banco-dados/aula-14-sqlite-introducao/)
 - [Aula 15 - SQLite CRUD](https://etec-bento-quirino.github.io/Programacao-Aplicativos-Moveis-I/modulo-05-banco-dados/aula-15-sqlite-crud/)
 - [Aula 18 - Boas práticas de UX](https://etec-bento-quirino.github.io/Programacao-Aplicativos-Moveis-I/modulo-07-boas-praticas-ux/aula-18-boas-praticas-de-ux/)
-
+ 
 ---
 
 > [!TIP]
