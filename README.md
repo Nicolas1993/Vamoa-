@@ -1,8 +1,8 @@
 # Vamoaê
 
-ref's — Projeto PAM I
+**ref's** — Trabalho em Grupo de PAM I
 
---- 
+Aplicativo de **organização de viagens**.
 
 > [!IMPORTANT]
 > **Sua inscrição foi aceita!** Bem-vindos ao Trabalho em Grupo de PAM I.
@@ -14,9 +14,25 @@ ref's — Projeto PAM I
 - Melyssa de Oliveira Franco
 - Pedro Henrique Leite de Souza
 
-## Tema
+## Como rodar o projeto
 
-Organizador de viagens — cotação, estimativa de preços, indicação de localização e hospedagens.
+Ponto de partida criado com [`create-expo-app`](https://www.npmjs.com/package/create-expo-app) (Expo / React Native).
+
+1. Instale as dependências
+
+   ```bash
+   npm install
+   ```
+
+2. Inicie o app
+
+   ```bash
+   npx expo start
+   ```
+
+3. Abra no seu dispositivo ou emulador:
+   - **Expo Go**: escaneie o QR Code exibido no terminal
+   - **Web**: pressione `w` no terminal
 
 ## Fichas de Entrega
 
@@ -40,7 +56,7 @@ Organizador de viagens — cotação, estimativa de preços, indicação de loca
 - [Aula 14 - SQLite introdução](https://etec-bento-quirino.github.io/Programacao-Aplicativos-Moveis-I/modulo-05-banco-dados/aula-14-sqlite-introducao/)
 - [Aula 15 - SQLite CRUD](https://etec-bento-quirino.github.io/Programacao-Aplicativos-Moveis-I/modulo-05-banco-dados/aula-15-sqlite-crud/)
 - [Aula 18 - Boas práticas de UX](https://etec-bento-quirino.github.io/Programacao-Aplicativos-Moveis-I/modulo-07-boas-praticas-ux/aula-18-boas-praticas-de-ux/)
- 
+
 ---
 
 > [!TIP]
