@@ -1,43 +1,53 @@
-export type Viagem = {
-  id: string;
-  destino: string;
-  dataIda: string;
-  dataVolta: string;
-  qtdPessoas: number;
-  hospedagem: string;
-  transporte: string;
-  valorEstimado: number;
-};
-
-export const viagensIniciais: Viagem[] = [
+export const VIAGENS_INICIAIS = [
   {
     id: '1',
-    destino: 'Ubatuba - SP',
-    dataIda: '12/12/2026',
-    dataVolta: '15/12/2026',
-    qtdPessoas: 4,
-    hospedagem: 'Pousada do Sol',
-    transporte: 'Carro',
-    valorEstimado: 850,
+    title: 'Praia de Copacabana',
+    location: 'Rio de Janeiro',
+    price: 'R$ 680',
+    rating: '4.9',
+    tag: 'Mais procurada',
+    days: '5 dias',
+    image:
+      'https://i.pinimg.com/736x/4f/31/03/4f3103015fb580368b4c8000c03d5a8f.jpg',
+    dataIda: '10/01/2027',
+    dataVolta: '15/01/2027',
+    qtdPessoas: '2',
+    hospedagem: 'Hotel Copacabana Palace',
+    transporte: 'Avião',
+    valorEstimado: '680',
   },
   {
     id: '2',
-    destino: 'Campos do Jordão - SP',
-    dataIda: '20/01/2027',
-    dataVolta: '23/01/2027',
-    qtdPessoas: 2,
-    hospedagem: 'Hotel Alpino',
-    transporte: 'Ônibus',
-    valorEstimado: 1200,
+    title: 'Paris',
+    location: 'Paris, França',
+    price: 'R$ 820',
+    rating: '4.8',
+    tag: 'Trending',
+    days: '4 dias',
+    image:
+      'https://i.pinimg.com/736x/e9/8f/2c/e98f2c723a8686fc228adad6c905ebc9.jpg',
+    dataIda: '20/02/2027',
+    dataVolta: '24/02/2027',
+    qtdPessoas: '2',
+    hospedagem: 'Hotel Eiffel',
+    transporte: 'Avião',
+    valorEstimado: '820',
   },
   {
     id: '3',
-    destino: 'Belo Horizonte - MG',
-    dataIda: '02/02/2027',
-    dataVolta: '06/02/2027',
-    qtdPessoas: 3,
-    hospedagem: 'Airbnb Centro',
-    transporte: 'Avião',
-    valorEstimado: 1900,
+    title: 'Gramado e Serra',
+    location: 'Rio Grande do Sul',
+    price: 'R$ 760',
+    rating: '4.7',
+    tag: 'Top 10',
+    days: '3 dias',
+    image:
+      'https://i.pinimg.com/1200x/4f/c7/a6/4fc7a6bc690d57666bae3856379787c1.jpg',
+    dataIda: '05/03/2027',
+    dataVolta: '08/03/2027',
+    qtdPessoas: '4',
+    hospedagem: 'Pousada da Serra',
+    transporte: 'Carro',
+    valorEstimado: '760',
   },
 ];

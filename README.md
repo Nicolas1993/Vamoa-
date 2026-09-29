@@ -1,6 +1,8 @@
 # Vamoaê
 
-*Nosso projeto para a matéria de PAM "Organizador de Viagens"* — grupo **ref's**.
+Organizador de viagens — grupo **ref's**.
+
+> Aplicação atualizada com as **Fases 1 e 2** do Trabalho em Grupo: a lista de viagens agora é salva no **AsyncStorage** e dá para **adicionar** e **excluir** viagens pelo próprio app.
 
 ## Como rodar
 
@@ -11,19 +13,17 @@ npx expo start
 
 ## O que já está pronto
 
-- **Fase 1** ✅ — Tela de **Lista** (FlatList com viagens) e tela de **Detalhe** (busca a viagem pelo `id`), com navegação via `expo-router`.
-- **Fase 2** ✅ — Tela **Adicionar** com formulário que **salva no AsyncStorage** (`lib/storage.js`). A lista recarrega ao voltar da tela de adicionar (`useFocusEffect`).
-- Campos do tema: destino, período, pessoas, hospedagem, transporte e valor estimado.
+- **Fase 1** ✅ — Tela de **Lista** com cards estilo Airbnb (imagens), tela de **Detalhe** e tela de **Adicionar** (navegação por estado no `App.js`).
+- **Fase 2** ✅ — Persistência em **AsyncStorage** (`lib/storage.js`) com dados iniciais em `data/viagens.js`. A lista carrega do banco ao abrir (`carregarViagens`).
+- **CRUD parcial** — Criar (formulário), Ler (lista/detalhe) e **Excluir** (com confirmação).
 
 ## Tarefas que faltam (vocês completam)
 
-Procure pelos comentários `// TAREFA (Aula XX):` no código:
+Procure pelos comentários `// TAREFA (Aula XX):` no `App.js`:
 
-1. **Aula 07** — Melhorar a validação do formulário (ex.: data no formato)`.
-2. **Aula 18** — Botão **Editar** e **Excluir** na tela de detalhe (com confirmação via `Alert.alert`).
-3. **Aula 14/15** — Migrar o armazenamento de **AsyncStorage para SQLite** (Fase 3). O `expo-sqlite` já está nas dependências.
-4. **Aula 09** — (Opcional) usar `expo-location` para sugerir destinos próximos, se o tema fizer sentido.
-5. **Aula 18** — Loading e empty state mais caprichados.
+1. **Aula 07** — Adicionar os campos qtdPessoas, hospedagem e transporte no formulário.
+2. **Aula 18** — Botão **Editar** na tela de detalhe (Atualizar no AsyncStorage).
+3. **Aula 14/15** — Migrar o armazenamento de AsyncStorage para **SQLite** na Fase 3 (`expo-sqlite`).
 
 ## Integrantes
 

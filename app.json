@@ -1,29 +1,27 @@
 {
   "expo": {
     "name": "Vamoaê",
-    "slug": "vamoa",
+    "slug": "vamoae",
     "version": "1.0.0",
     "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
     "userInterfaceStyle": "light",
-    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/images/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#1d3557"
-      },
-      "edgeToEdgeEnabled": true
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      }
     },
     "web": {
-      "output": "static"
-    },
-    "plugins": ["expo-router"],
-    "experiments": {
-      "typedRoutes": true
-    },
-    "splash": {
-      "backgroundColor": "#ffffff"
+      "favicon": "./assets/images/favicon.png"
     }
   }
 }
