@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import {
   adicionarViagem,
+  atualizarViagem,
   buscarViagem,
   carregarViagens,
   excluirViagem,
@@ -22,6 +23,8 @@ export default function App() {
   const [tela, setTela] = useState('lista'); // 'lista' | 'detalhe' | 'adicionar'
   const [viagens, setViagens] = useState([]);
   const [selecionada, setSelecionada] = useState(null);
+  const [modoEdicao, setModoEdicao] = useState(false);
+  const [editandoId, setEditandoId] = useState(null);
 
   // formulário (tela adicionar)
   const [destino, setDestino] = useState('');
@@ -29,6 +32,22 @@ export default function App() {
   const [dataIda, setDataIda] = useState('');
   const [dataVolta, setDataVolta] = useState('');
   const [valorEstimado, setValorEstimado] = useState('');
+  const [qtdPessoas, setQtdPessoas] = useState('1');
+  const [hospedagem, setHospedagem] = useState('A definir');
+  const [transporte, setTransporte] = useState('A definir');
+
+  const limparFormulario = () => {
+    setDestino('');
+    setLocal('');
+    setDataIda('');
+    setDataVolta('');
+    setValorEstimado('');
+    setQtdPessoas('1');
+    setHospedagem('A definir');
+    setTransporte('A definir');
+    setModoEdicao(false);
+    setEditandoId(null);
+  };
 
   const recarregar = useCallback(async () => {
     const lista = await carregarViagens();
@@ -46,26 +65,46 @@ export default function App() {
       Alert.alert('Atenção', 'Preencha ao menos o destino.');
       return;
     }
-    await adicionarViagem({
+
+    const viagemBase = {
       title: destino.trim(),
       location: local.trim() || 'A definir',
       price: valorEstimado ? `R$ ${valorEstimado.trim()}` : 'A definir',
-      rating: 'Novo',
-      tag: 'Adicionada',
       days: dataIda && dataVolta ? `${dataIda} → ${dataVolta}` : 'A combinar',
-      image: 'https://i.pinimg.com/736x/9d/b1/5b/9db15b67bed3ac1e7306dc9fc47e21af.jpg',
       dataIda: dataIda.trim() || 'A definir',
       dataVolta: dataVolta.trim() || 'A definir',
-      qtdPessoas: '1',
-      hospedagem: 'A definir',
-      transporte: 'A definir',
+      qtdPessoas: qtdPessoas.trim() || '1',
+      hospedagem: hospedagem.trim() || 'A definir',
+      transporte: transporte.trim() || 'A definir',
       valorEstimado: valorEstimado.trim(),
+    };
+
+    if (modoEdicao && editandoId) {
+      const viagemAtualizada = {
+        ...selecionada,
+        ...viagemBase,
+        rating: selecionada?.rating || 'Novo',
+        tag: selecionada?.tag || 'Editada',
+        image: selecionada?.image || 'https://i.pinimg.com/736x/9d/b1/5b/9db15b67bed3ac1e7306dc9fc47e21af.jpg',
+      };
+
+      await atualizarViagem(editandoId, viagemAtualizada);
+      const atualizada = await buscarViagem(editandoId);
+      setSelecionada(atualizada);
+      limparFormulario();
+      await recarregar();
+      setTela('detalhe');
+      return;
+    }
+
+    await adicionarViagem({
+      ...viagemBase,
+      rating: 'Novo',
+      tag: 'Adicionada',
+      image: 'https://i.pinimg.com/736x/9d/b1/5b/9db15b67bed3ac1e7306dc9fc47e21af.jpg',
     });
-    setDestino('');
-    setLocal('');
-    setDataIda('');
-    setDataVolta('');
-    setValorEstimado('');
+
+    limparFormulario();
     await recarregar();
     setTela('lista');
   };
@@ -85,13 +124,30 @@ export default function App() {
     ]);
   };
 
+  const iniciarEdicao = () => {
+    if (!selecionada) return;
+    setModoEdicao(true);
+    setEditandoId(selecionada.id);
+    setDestino(selecionada.title || '');
+    setLocal(selecionada.location || '');
+    setDataIda(selecionada.dataIda || '');
+    setDataVolta(selecionada.dataVolta || '');
+    setValorEstimado(selecionada.valorEstimado || '');
+    setQtdPessoas(selecionada.qtdPessoas || '1');
+    setHospedagem(selecionada.hospedagem || 'A definir');
+    setTransporte(selecionada.transporte || 'A definir');
+    setTela('adicionar');
+  };
+
   if (tela === 'adicionar') {
     return (
       <SafeAreaView style={styles.safeArea}>
         <StatusBar style="dark" />
         <ScrollView contentContainerStyle={styles.formContent}>
           <Text style={styles.eyebrow}>Vamoaê</Text>
-          <Text style={styles.title}>Adicionar viagem</Text>
+          <Text style={styles.title}>
+            {modoEdicao ? 'Editar viagem' : 'Adicionar viagem'}
+          </Text>
 
           <Text style={styles.label}>Destino *</Text>
           <TextInput
@@ -134,14 +190,42 @@ export default function App() {
             keyboardType="numeric"
           />
 
-          {/* TAREFA (Aula 07): adicione aqui os campos qtdPessoas, hospedagem e transporte */}
+          <Text style={styles.label}>Quantidade de pessoas</Text>
+          <TextInput
+            style={styles.input}
+            value={qtdPessoas}
+            onChangeText={setQtdPessoas}
+            placeholder="Ex.: 2"
+            keyboardType="numeric"
+          />
+
+          <Text style={styles.label}>Hospedagem</Text>
+          <TextInput
+            style={styles.input}
+            value={hospedagem}
+            onChangeText={setHospedagem}
+            placeholder="Ex.: Hotel Copacabana Palace"
+          />
+
+          <Text style={styles.label}>Transporte</Text>
+          <TextInput
+            style={styles.input}
+            value={transporte}
+            onChangeText={setTransporte}
+            placeholder="Ex.: Avião"
+          />
 
           <TouchableOpacity style={styles.button} onPress={salvar}>
-            <Text style={styles.buttonText}>Salvar viagem</Text>
+            <Text style={styles.buttonText}>
+              {modoEdicao ? 'Salvar alterações' : 'Salvar viagem'}
+            </Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.buttonSecundario}
-            onPress={() => setTela('lista')}
+            onPress={() => {
+              limparFormulario();
+              setTela(modoEdicao ? 'detalhe' : 'lista');
+            }}
           >
             <Text style={styles.buttonTextSecundario}>Cancelar</Text>
           </TouchableOpacity>
@@ -166,6 +250,9 @@ export default function App() {
               ['Data de ida', selecionada.dataIda],
               ['Data de volta', selecionada.dataVolta],
               ['Valor estimado', selecionada.price],
+              ['Quantidade de pessoas', selecionada.qtdPessoas],
+              ['Hospedagem', selecionada.hospedagem],
+              ['Transporte', selecionada.transporte],
             ].map(([rotulo, valor]) => (
               <View key={rotulo} style={styles.detailRow}>
                 <Text style={styles.detailLabel}>{rotulo}</Text>
@@ -174,7 +261,9 @@ export default function App() {
             ))}
           </View>
 
-          {/* TAREFA (Aula 18): adicione um botão "Editar" aqui (Atualizar a viagem no AsyncStorage) */}
+          <TouchableOpacity style={styles.button} onPress={iniciarEdicao}>
+            <Text style={styles.buttonText}>Editar viagem</Text>
+          </TouchableOpacity>
 
           <TouchableOpacity
             style={styles.buttonDanger}
