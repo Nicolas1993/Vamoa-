@@ -1,5 +1,21 @@
 # Vamoaê
 
+<!-- PAM-CI-NOTA-INICIO -->
+### Nota atual (automática) — ref's (viagens)
+
+[![CI](https://github.com/Nicolas1993/Vamoa-/actions/workflows/pam-ci.yml/badge.svg)](https://github.com/Nicolas1993/Vamoa-/actions/workflows/pam-ci.yml) [![Nota](https://img.shields.io/badge/Nota%20PAM%20I-R-orange)](https://github.com/Nicolas1993/Vamoa-/actions/workflows/pam-ci.yml)
+
+**R** — Regular · **47%** (26/55 pontos) · atualizado em 2026-10-05 23:26
+
+| Fase | Pontos |
+|------|--------|
+| Fase 1 — Estrutura | 9/10 |
+| Fase 2 — AsyncStorage | 15/15 |
+| Fase 3 — SQLite | 2/30 |
+
+Checklist item a item em [NOTA.md](NOTA.md) · [ver a rodada mais recente no Actions](https://github.com/Nicolas1993/Vamoa-/actions/workflows/pam-ci.yml)
+<!-- PAM-CI-NOTA-FIM -->
+
 Organizador de viagens — grupo **ref's**.
 
 > Aplicação atualizada com as **Fases 1 e 2** do Trabalho em Grupo: a lista de viagens agora é salva no **AsyncStorage** e dá para **adicionar** e **excluir** viagens pelo próprio app.
