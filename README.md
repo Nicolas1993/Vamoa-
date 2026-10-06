@@ -5,7 +5,7 @@
 
 [![CI](https://github.com/Nicolas1993/Vamoa-/actions/workflows/pam-ci.yml/badge.svg)](https://github.com/Nicolas1993/Vamoa-/actions/workflows/pam-ci.yml) [![Nota](https://img.shields.io/badge/Nota%20PAM%20I-R-orange)](https://github.com/Nicolas1993/Vamoa-/actions/workflows/pam-ci.yml)
 
-**R** — Regular · **47%** (26/55 pontos) · atualizado em 2026-10-05 23:26
+**R** — Regular · **47%** (26/55 pontos) · atualizado em 2026-10-06 00:15
 
 | Fase | Pontos |
 |------|--------|
