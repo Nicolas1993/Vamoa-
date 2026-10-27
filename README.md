@@ -5,7 +5,7 @@
 
 [![CI](https://github.com/Nicolas1993/Vamoa-/actions/workflows/pam-ci.yml/badge.svg)](https://github.com/Nicolas1993/Vamoa-/actions/workflows/pam-ci.yml) [![Nota](https://img.shields.io/badge/Nota%20PAM%20I-R-orange)](https://github.com/Nicolas1993/Vamoa-/actions/workflows/pam-ci.yml)
 
-**R** — Regular · **47%** (26/55 pontos) · atualizado em 2026-10-27 00:48
+**R** — Regular · **47%** (26/55 pontos) · atualizado em 2026-10-27 01:24
 
 | Fase | Pontos |
 |------|--------|
@@ -16,10 +16,17 @@
 Checklist item a item em [NOTA.md](NOTA.md) · [ver a rodada mais recente no Actions](https://github.com/Nicolas1993/Vamoa-/actions/workflows/pam-ci.yml)
 <!-- PAM-CI-NOTA-FIM -->
 
+
+
 <!-- PAM-CI-NOTA-INICIO -->
 ### Nota atual (automática) — ref's (viagens)
 
-[![CI](https://github.com/Nicolas1993/Vamoa-/actions/workflows/pam-ci.yml/badge.svg)](https://github.com/Nicolas1993/Vamoa-/actions/workflows/pam-ci.yml) [![Nota](https://img.shields.io/badge/Nota%20PAM%20I-R-orange)](https://github.com/Nicolas1993/Vamoa-/actions/workflows/pam-ci.yml)
+[![CI](https://github.com/wendelmax/Vamoa-/actions/workflows/pam-ci.yml/badge.svg)](https://github.com/wendelmax/Vamoa-/actions/workflows/pam-ci.yml) [![Nota](https://img.shields.io/badge/Nota%20PAM%20I-R-orange)](https://github.com/wendelmax/Vamoa-/actions/workflows/pam-ci.yml)
+
+<<<<<<< HEAD
+
+=======
+>>>>>>> origin/main
 
 
 ---
