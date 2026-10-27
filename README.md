@@ -23,6 +23,11 @@ Checklist item a item em [NOTA.md](NOTA.md) · [ver a rodada mais recente no Act
 
 [![CI](https://github.com/wendelmax/Vamoa-/actions/workflows/pam-ci.yml/badge.svg)](https://github.com/wendelmax/Vamoa-/actions/workflows/pam-ci.yml) [![Nota](https://img.shields.io/badge/Nota%20PAM%20I-R-orange)](https://github.com/wendelmax/Vamoa-/actions/workflows/pam-ci.yml)
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> origin/main
+
 ---
 
 ## Colaboração por integrante
