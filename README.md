@@ -46,3 +46,19 @@ Procure pelos comentários `// TAREFA (Aula XX):` no `App.js`:
 - Nicolas de Oliveira Alves
 - Melyssa de Oliveira Franco
 - Pedro Henrique Leite de Souza
+
+---
+
+## Colaboração por integrante
+
+> *Excluídos: commits do professor Jackson Sá (wendelmax), `github-actions[bot]` e `dependabot[bot]`. Contagem com base em `git log --no-merges`.*
+
+| # | Integrante | Commits | Participação |
+|---|------------|---------|--------------|
+| 1 | Nicolas1993 | 3 | 42.9% ████████░░░░░░░░░░░░ |
+| 2 | memel99 | 1 | 14.3% ██░░░░░░░░░░░░░░░░░░ |
+| 3 | Pedro5035 | 1 | 14.3% ██░░░░░░░░░░░░░░░░░░ |
+| 4 | Pedro Henrique | 1 | 14.3% ██░░░░░░░░░░░░░░░░░░ |
+| 5 | NICOLAS DE OLIVEIRA ALVES | 1 | 14.3% ██░░░░░░░░░░░░░░░░░░ |
+
+**Total de commits considerados:** 7
