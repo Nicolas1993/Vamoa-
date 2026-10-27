@@ -48,6 +48,7 @@ Procure pelos comentários `// TAREFA (Aula XX):` no `App.js`:
 - Pedro Henrique Leite de Souza
 
 
+
 ---
 
 ## Colaboração por integrante
