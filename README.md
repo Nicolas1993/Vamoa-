@@ -28,6 +28,7 @@ Checklist item a item em [NOTA.md](NOTA.md) · [ver a rodada mais recente no Act
 =======
 >>>>>>> origin/main
 
+
 ---
 
 ## Colaboração por integrante
