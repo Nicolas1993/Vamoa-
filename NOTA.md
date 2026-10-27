@@ -1,12 +1,12 @@
 > Este arquivo e **gerado automaticamente** pelo CI a cada push na branch `main`.
 > Nao edite a mao: o proximo commit do CI sobrescreve. Para ver a rodada no Actions:
-> https://github.com/wendelmax/Vamoa-/actions/workflows/pam-ci.yml
+> https://github.com/Nicolas1993/Vamoa-/actions/workflows/pam-ci.yml
 
 ## Nota PAM I — ref's (viagens)
 
 ![](https://img.shields.io/static/v1?label=Nota%20PAM%20I&message=R&color=orange)
 
-**Nota atual: R** · 47% (26/55 pontos) · rodada de 2026-10-27 00:37:00 · commit `5fac8c4`
+**Nota atual: R** · 47% (26/55 pontos) · rodada de 2026-10-27 00:09:32 · commit `aa9650c`
 
 Legenda: I = Insuficiente (0–25%) · R = Regular (25–50%) · B = Bom (50–75%) · MB = Muito bom (75–100%)
 
