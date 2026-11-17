@@ -7,5 +7,5 @@
   "detalhe": "App.js",
   "dados": ["data/viagens.js"],
   "storage": "lib/storage.js",
-  "sqlite": ""
+  "sqlite": "database/vamoa.db"
 }

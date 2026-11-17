@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import * as SQLite from 'expo-sqlite';
 import {
   Alert,
   Image,
@@ -11,13 +12,105 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {
-  adicionarViagem,
-  atualizarViagem,
-  buscarViagem,
-  carregarViagens,
-  excluirViagem,
-} from './lib/storage';
+
+const db = SQLite.openDatabaseSync('vamoa.db');
+
+const SQL_SEED = `
+  PRAGMA foreign_keys = ON;
+
+  CREATE TABLE IF NOT EXISTS viagens (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    location TEXT,
+    price TEXT,
+    rating TEXT,
+    tag TEXT,
+    days TEXT,
+    image TEXT,
+    dataIda TEXT,
+    dataVolta TEXT,
+    qtdPessoas TEXT,
+    hospedagem TEXT,
+    transporte TEXT,
+    valorEstimado TEXT
+  );
+
+  INSERT OR IGNORE INTO viagens (
+    id, title, location, price, rating, tag, days, image, dataIda, dataVolta, qtdPessoas, hospedagem, transporte, valorEstimado
+  ) VALUES
+    (1, 'Praia de Copacabana', 'Rio de Janeiro', 'R$ 680', '4.9', 'Mais procurada', '5 dias', 'https://i.pinimg.com/736x/4f/31/03/4f3103015fb580368b4c8000c03d5a8f.jpg', '10/01/2027', '15/01/2027', '2', 'Hotel Copacabana Palace', 'Avião', '680'),
+    (2, 'Paris', 'Paris, França', 'R$ 820', '4.8', 'Trending', '4 dias', 'https://i.pinimg.com/736x/e9/8f/2c/e98f2c723a8686fc228adad6c905ebc9.jpg', '20/02/2027', '24/02/2027', '2', 'Hotel Eiffel', 'Avião', '820'),
+    (3, 'Gramado e Serra', 'Rio Grande do Sul', 'R$ 760', '4.7', 'Top 10', '3 dias', 'https://i.pinimg.com/1200x/4f/c7/a6/4fc7a6bc690d57666bae3856379787c1.jpg', '05/03/2027', '08/03/2027', '4', 'Pousada da Serra', 'Carro', '760');
+`;
+
+const formatarViagem = (viagem) => ({
+  ...viagem,
+  id: String(viagem.id),
+});
+
+const inicializarBanco = async () => {
+  await db.execAsync(SQL_SEED);
+};
+
+const listarViagensDoBanco = async () => {
+  const viagens = await db.getAllAsync('SELECT * FROM viagens ORDER BY id DESC');
+  return viagens.map(formatarViagem);
+};
+
+const buscarViagemNoBanco = async (id) => {
+  const viagem = await db.getFirstAsync('SELECT * FROM viagens WHERE id = ?', [id]);
+  return viagem ? formatarViagem(viagem) : null;
+};
+
+const adicionarViagemNoBanco = async (viagem) => {
+  await db.runAsync(
+    `INSERT INTO viagens (title, location, price, rating, tag, days, image, dataIda, dataVolta, qtdPessoas, hospedagem, transporte, valorEstimado)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);`,
+    [
+      viagem.title,
+      viagem.location,
+      viagem.price,
+      viagem.rating,
+      viagem.tag,
+      viagem.days,
+      viagem.image,
+      viagem.dataIda,
+      viagem.dataVolta,
+      viagem.qtdPessoas,
+      viagem.hospedagem,
+      viagem.transporte,
+      viagem.valorEstimado,
+    ]
+  );
+};
+
+const atualizarViagemNoBanco = async (id, viagem) => {
+  await db.runAsync(
+    `UPDATE viagens
+     SET title = ?, location = ?, price = ?, rating = ?, tag = ?, days = ?, image = ?, dataIda = ?, dataVolta = ?, qtdPessoas = ?, hospedagem = ?, transporte = ?, valorEstimado = ?
+     WHERE id = ?;`,
+    [
+      viagem.title,
+      viagem.location,
+      viagem.price,
+      viagem.rating,
+      viagem.tag,
+      viagem.days,
+      viagem.image,
+      viagem.dataIda,
+      viagem.dataVolta,
+      viagem.qtdPessoas,
+      viagem.hospedagem,
+      viagem.transporte,
+      viagem.valorEstimado,
+      id,
+    ]
+  );
+};
+
+const excluirViagemNoBanco = async (id) => {
+  await db.runAsync('DELETE FROM viagens WHERE id = ?', [id]);
+};
 
 export default function App() {
   const [tela, setTela] = useState('lista'); // 'lista' | 'detalhe' | 'adicionar'
@@ -50,12 +143,21 @@ export default function App() {
   };
 
   const recarregar = useCallback(async () => {
-    const lista = await carregarViagens();
+    await inicializarBanco();
+    const lista = await listarViagensDoBanco();
     setViagens(lista);
   }, []);
 
+  useEffect(() => {
+    const carregar = async () => {
+      await recarregar();
+    };
+
+    carregar();
+  }, [recarregar]);
+
   const abrirDetalhe = async (id) => {
-    const viagem = await buscarViagem(id);
+    const viagem = await buscarViagemNoBanco(Number(id));
     setSelecionada(viagem);
     setTela('detalhe');
   };
@@ -88,8 +190,8 @@ export default function App() {
         image: selecionada?.image || 'https://i.pinimg.com/736x/9d/b1/5b/9db15b67bed3ac1e7306dc9fc47e21af.jpg',
       };
 
-      await atualizarViagem(editandoId, viagemAtualizada);
-      const atualizada = await buscarViagem(editandoId);
+      await atualizarViagemNoBanco(Number(editandoId), viagemAtualizada);
+      const atualizada = await buscarViagemNoBanco(Number(editandoId));
       setSelecionada(atualizada);
       limparFormulario();
       await recarregar();
@@ -97,7 +199,7 @@ export default function App() {
       return;
     }
 
-    await adicionarViagem({
+    await adicionarViagemNoBanco({
       ...viagemBase,
       rating: 'Novo',
       tag: 'Adicionada',
@@ -116,7 +218,7 @@ export default function App() {
         text: 'Excluir',
         style: 'destructive',
         onPress: async () => {
-          await excluirViagem(id);
+          await excluirViagemNoBanco(Number(id));
           await recarregar();
           setTela('lista');
         },
