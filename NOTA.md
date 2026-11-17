@@ -4,9 +4,9 @@
 
 ## Nota PAM I — ref's (viagens)
 
-![](https://img.shields.io/static/v1?label=Nota%20PAM%20I&message=R&color=orange)
+![](https://img.shields.io/static/v1?label=Nota%20PAM%20I&message=B&color=yellow)
 
-**Nota atual: R** · 35% (35/100 pontos) · rodada de 2026-11-10 01:34:40 · commit `e88e4bf`
+**Nota atual: B** · 66% (66/100 pontos) · rodada de 2026-11-17 00:57:13 · commit `094f7f4`
 
 Legenda: I = Insuficiente (0–25%) · R = Regular (25–50%) · B = Bom (50–75%) · MB = Muito bom (75–100%)
 
@@ -14,8 +14,8 @@ Legenda: I = Insuficiente (0–25%) · R = Regular (25–50%) · B = Bom (50–7
 |---|---|---|---|
 | Fase 1 — Estrutura | 1x (10 pts) | 9/10 | em desenvolvimento |
 | Fase 2 — AsyncStorage | 1x (15 pts) | 15/15 | completa |
-| Fase 3 — SQLite | 2x (30 pts) | 2/30 | iniciando |
-| Fase 4 — Versão Final (SQLite + UX + Dispositivo) | 3x (45 pts) | 9/45 | iniciando |
+| Fase 3 — SQLite | 2x (30 pts) | 30/30 | completa |
+| Fase 4 — Versão Final (SQLite + UX + Dispositivo) | 3x (45 pts) | 12/45 | iniciando |
 
 ## Resumo dos Testes Funcionais (Execução Real em Runtime Node + SQLite)
 
@@ -60,27 +60,27 @@ Legenda: I = Insuficiente (0–25%) · R = Regular (25–50%) · B = Bom (50–7
 - [x] **(+1 pts)** Dados iniciais/seed são gravados na 1ª execução — `lib/storage.js`
 - [x] **(+1 pts)** Formulário valida campos (trim/length/vazio) — `App.js`
 
-### Fase 3 — Banco de dados SQLite (2/30 pts · peso 2x)
+### Fase 3 — Banco de dados SQLite (30/30 pts · peso 2x)
 
-- [ ] **(+2 pts)** Dependência expo-sqlite está no package.json — `FALTA instalar: npx expo install expo-sqlite`
-- [ ] **(+2 pts)** Existe import do expo-sqlite — `—`
-- [ ] **(+2 pts)** Existe arquivo de banco de dados — `—`
-- [ ] **(+2 pts)** Cria a tabela com CREATE TABLE IF NOT EXISTS — `—`
-- [ ] **(+2 pts)** Insere dados com INSERT INTO — `—`
-- [ ] **(+2 pts)** Consulta com SELECT — `—`
-- [ ] **(+2 pts)** Atualiza com UPDATE — `—`
-- [ ] **(+2 pts)** Exclui com DELETE FROM — `—`
-- [ ] **(+2 pts)** Usa filtros com WHERE — `—`
-- [ ] **(+2 pts)** Banco aberto com openDatabaseAsync/openDatabaseSync/openDatabase — `—`
-- [ ] **(+2 pts)** Tela de lista carrega dados do banco — `App.js`
-- [ ] **(+2 pts)** Formulário salva no banco (INSERT/runAsync/runSync) — `App.js`
-- [ ] **(+2 pts)** Detalhe busca no banco com WHERE/SELECT — `App.js`
+- [x] **(+2 pts)** Dependência expo-sqlite está no package.json — `no package.json`
+- [x] **(+2 pts)** Existe import do expo-sqlite — `App.js`
+- [x] **(+2 pts)** Existe arquivo de banco de dados — `database/vamoa.db`
+- [x] **(+2 pts)** Cria a tabela com CREATE TABLE IF NOT EXISTS — `App.js`
+- [x] **(+2 pts)** Insere dados com INSERT INTO — `App.js`
+- [x] **(+2 pts)** Consulta com SELECT — `App.js`
+- [x] **(+2 pts)** Atualiza com UPDATE — `App.js`
+- [x] **(+2 pts)** Exclui com DELETE FROM — `App.js`
+- [x] **(+2 pts)** Usa filtros com WHERE — `App.js`
+- [x] **(+2 pts)** Banco aberto com openDatabaseAsync/openDatabaseSync/openDatabase — `App.js`
+- [x] **(+2 pts)** Tela de lista carrega dados do banco — `App.js`
+- [x] **(+2 pts)** Formulário salva no banco (INSERT/runAsync/runSync) — `App.js`
+- [x] **(+2 pts)** Detalhe busca no banco com WHERE/SELECT — `App.js`
 - [x] **(+2 pts)** Usa async/await corretamente (mais de 2 await) — `App.js`
-- [ ] **(+2 pts)** Banco possui dados iniciais (seed inserido em SQL) — `—`
+- [x] **(+2 pts)** Banco possui dados iniciais (seed inserido em SQL) — `App.js`
 
-### Fase 4 — Versão Final: SQLite Exclusivo, UX, Dispositivo e Entrega (9/45 pts · peso 3x)
+### Fase 4 — Versão Final: SQLite Exclusivo, UX, Dispositivo e Entrega (12/45 pts · peso 3x)
 
-- [ ] **(+3 pts)** SQLite exclusivo: fluxo das telas usa SQLite sem depender de AsyncStorage p/ dados críticos — `FALTA migrar telas 100% para SQLite (remover AsyncStorage do CRUD principal)`
+- [x] **(+3 pts)** SQLite exclusivo: fluxo das telas usa SQLite sem depender de AsyncStorage p/ dados críticos — `database/vamoa.db (telas sem AsyncStorage crítico)`
 - [ ] **(+3 pts)** [Teste Funcional SQLite] Banco abre e cria a(s) tabela(s) em memória (CREATE TABLE) — `FALTA criar tabela real no SQLite em execução`
 - [ ] **(+3 pts)** [Teste Funcional SQLite] Fluxo de ADICIONAR insere registro real no banco (INSERT INTO) — `FALTA função de adicionar gravando registro real no SQLite`
 - [ ] **(+3 pts)** [Teste Funcional SQLite] Fluxo de LISTAR e FILTRAR retorna dados reais (SELECT + WHERE) — `FALTA consulta SELECT/WHERE funcional no SQLite`
@@ -92,7 +92,7 @@ Legenda: I = Insuficiente (0–25%) · R = Regular (25–50%) · B = Bom (50–7
 - [ ] **(+3 pts)** UX: Empty State quando não houver registros (mensagem amigável + ícone/emoji/ilustração) — `FALTA ListEmptyComponent / estado vazio com mensagem e ícone/ilustração`
 - [x] **(+3 pts)** UX: Mensagem de erro amigável se falhar ao CARREGAR dados (try/catch com feedback) — `lib/storage.js`
 - [x] **(+3 pts)** UX: Mensagem de erro amigável e validação se falhar ao SALVAR/EXCLUIR (try/catch + Alert/.trim) — `lib/storage.js + validação .trim()`
-- [x] **(+3 pts)** Organização do código: separação em pastas por responsabilidade (screens/app, database/data, components) — `pastas: data, lib`
+- [x] **(+3 pts)** Organização do código: separação em pastas por responsabilidade (screens/app, database/data, components) — `pastas: data, database, lib`
 - [ ] **(+3 pts)** Interface consistente: FlatList (keyExtractor + renderItem) e estilização StyleSheet.create — `FALTA FlatList com keyExtractor/renderItem e StyleSheet.create consistente`
 - [ ] **(+3 pts)** Entrega: repositório limpo (.gitignore sem node_modules) e README com instruções/Expo Go/APK — `FALTA .gitignore ou documentar como rodar/testar (Expo Go/APK) no README.md`
 
