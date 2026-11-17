@@ -3,16 +3,16 @@
 <!-- PAM-CI-NOTA-INICIO -->
 ### Nota atual (automática) — ref's (viagens)
 
-[![CI](https://github.com/Nicolas1993/Vamoa-/actions/workflows/pam-ci.yml/badge.svg)](https://github.com/Nicolas1993/Vamoa-/actions/workflows/pam-ci.yml) [![Nota](https://img.shields.io/badge/Nota%20PAM%20I-B-yellow)](https://github.com/Nicolas1993/Vamoa-/actions/workflows/pam-ci.yml)
+[![CI](https://github.com/Nicolas1993/Vamoa-/actions/workflows/pam-ci.yml/badge.svg)](https://github.com/Nicolas1993/Vamoa-/actions/workflows/pam-ci.yml) [![Nota](https://img.shields.io/badge/Nota%20PAM%20I-MB-green)](https://github.com/Nicolas1993/Vamoa-/actions/workflows/pam-ci.yml)
 
-**B** — Bom · **66%** (66/100 pontos) · atualizado em 2026-11-17 00:57
+**MB** — Muito bom · **78%** (78/100 pontos) · atualizado em 2026-11-17 01:30
 
 | Fase | Pontos |
 |------|--------|
 | Fase 1 — Estrutura | 9/10 |
 | Fase 2 — AsyncStorage | 15/15 |
 | Fase 3 — SQLite | 30/30 |
-| Fase 4 — Versão Final (UX e Dispositivo) | 12/45 |
+| Fase 4 — Versão Final (UX e Dispositivo) | 24/45 |
 
 Checklist item a item em [NOTA.md](NOTA.md) · [ver a rodada mais recente no Actions](https://github.com/Nicolas1993/Vamoa-/actions/workflows/pam-ci.yml)
 <!-- PAM-CI-NOTA-FIM -->
